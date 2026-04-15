@@ -1,0 +1,28 @@
+name: ShellCheck
+
+on:
+  push:
+    paths:
+      - 'scripts/**'
+  pull_request:
+    paths:
+      - 'scripts/**'
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck on all scripts
+        run: |
+          echo "Running ShellCheck on scripts/..."
+          find scripts/ -name '*.sh' -print0 | \
+            xargs -0 shellcheck --severity=warning --shell=bash
+          echo "ShellCheck completed."

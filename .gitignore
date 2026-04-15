@@ -1,0 +1,44 @@
+# =============================================================================
+# .gitignore – macbook-ubuntu-t2
+# Project: CyberSec-Homelab 2025
+# =============================================================================
+
+# ── Firmware files (proprietary – never commit) ───────────────────────────────
+*.bin
+*.clm_blob
+firmware/
+
+# ── Sensitive configuration ───────────────────────────────────────────────────
+.env
+*.env.*
+secrets/
+credentials/
+*.key
+*.pem
+*.p12
+*.pfx
+
+# ── Log files ─────────────────────────────────────────────────────────────────
+logs/
+*.log
+*.csv
+
+# ── OS and editor artifacts ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# ── Build artifacts ───────────────────────────────────────────────────────────
+*.deb
+*.deb.tmp
+build/
+dist/
+
+# ── Temporary files ───────────────────────────────────────────────────────────
+tmp/
+temp/
+*.tmp

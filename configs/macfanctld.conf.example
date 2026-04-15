@@ -1,0 +1,29 @@
+# macfanctld.conf – Reference Configuration for MacBook Pro 2018 (T2)
+#
+# Copy to: /etc/macfanctld.conf
+# Reload:  sudo systemctl restart macfanctld
+#
+# Sensors are read from applesmc via lm-sensors.
+# Run 'sensors' to verify sensor names on your system.
+#
+# Temperature unit: Celsius
+# Speed unit:       RPM
+
+[general]
+poll_interval = 5          # Sensor polling interval in seconds
+
+[fan0]
+# Left fan
+min_speed = 1200           # Minimum RPM at idle
+max_speed = 6200           # Maximum RPM under full load
+
+[fan1]
+# Right fan
+min_speed = 1200
+max_speed = 6200
+
+[temp_thresholds]
+# Format: SENSOR_NAME = low_temp high_temp
+# Fans ramp from min_speed at low_temp to max_speed at high_temp
+TC0P = 50 85               # CPU proximity sensor:  50°C → min, 85°C → max
+Ts0S = 45 75               # Palm-rest sensor:      45°C → min, 75°C → max

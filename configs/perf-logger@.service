@@ -1,0 +1,16 @@
+[Unit]
+Description=Performance Logger for MacBook Pro T2 (%i)
+After=local-fs.target
+Wants=local-fs.target
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/home/%i/.local/share/perf-logs/perf_log.sh 60
+Restart=on-failure
+RestartSec=30
+StandardOutput=append:/home/%i/.local/share/perf-logs/perf_logger.log
+StandardError=append:/home/%i/.local/share/perf-logs/perf_logger.log
+
+[Install]
+WantedBy=multi-user.target
